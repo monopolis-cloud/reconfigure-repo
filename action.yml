@@ -1,0 +1,10 @@
+name: 'Monopolis: Reconfigure Repository'
+description: 'Validates and updates the internal Monopolis configuration for this repo'
+author: 'Monopolis'
+branding:
+  icon: 'code'
+  color: 'gray-dark'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
