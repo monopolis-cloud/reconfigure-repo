@@ -1,4 +1,6 @@
-#!/bin/ash -xe
+#!/bin/bash
+
+set -e
 
 REPO_PATH=$(jq -r '.repository.full_name' $GITHUB_EVENT_PATH)
 REF_PATH=$(jq -r '.ref' $GITHUB_EVENT_PATH)
