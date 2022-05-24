@@ -6,8 +6,12 @@ BRANCH=${REF_PATH:11}
 
 MONOPOLIS_URL="https://github-api.monopolis.cloud/reconfigure/$REPO_PATH?branch=$BRANCH"
 
-cat .monopolis/config.yml | \
-  curl --fail-with-body -X POST --data-binary @- \
-  -H "Authorization: Bearer ${GITHUB_TOKEN}" \
-  "${MONOPOLIS_URL}"
+echo "Validating configuration...\n"
+
+STATUSCODE=$(cat .monopolis/config.yml | curl --silent --output /dev/stderr --write-out "%{http_code}" -X POST --data-binary @- -H "Authorization: Bearer ${GITHUB_TOKEN}" "${MONOPOLIS_URL}")
+
+if test $STATUSCODE -ne 200; then
+	echo "\n\nValidation failure so exiting"
+	exit -1
+fi
 
