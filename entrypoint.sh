@@ -8,7 +8,7 @@ MONOPOLIS_URL="https://github-api.monopolis.cloud/reconfigure/$REPO_PATH?branch=
 
 echo "Validating configuration..."
 
-STATUSCODE=$(cat .monopolis/config.yml | curl --silent --output /dev/stderr --write-out "%{http_code}" -X POST --data-binary @- -H "Authorization: Bearer ${GITHUB_TOKEN}" "${MONOPOLIS_URL}")
+STATUSCODE=$(cat monopolis.yml | curl --silent --output /dev/stderr --write-out "%{http_code}" -X POST --data-binary @- -H "Authorization: Bearer ${GITHUB_TOKEN}" "${MONOPOLIS_URL}")
 
 if test $STATUSCODE -ne 200; then
 	echo "Validation failure so exiting"
