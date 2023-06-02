@@ -8,7 +8,7 @@ MONOPOLIS_URL="https://api.monopolis.cloud/v1/reconfigure/$REPO_PATH?branch=$BRA
 
 echo "Validating configuration..."
 
-STATUSCODE=$(cat monopolis.yml | curl --silent --output /dev/stderr --write-out "%{http_code}" -X POST --data-binary @- -H "Authorization: Bearer ${MONOPOLIS_TOKEN}" "${MONOPOLIS_URL}")
+STATUSCODE=$(cat monopolis.yml | curl --silent --output /dev/stderr --write-out "%{http_code}" -X POST --data-binary @- -H "Authorization: Bearer ${MONOPOLIS_API_KEY}" "${MONOPOLIS_URL}")
 
 if test $STATUSCODE -ne 200; then
 	echo "Validation failure so exiting"
