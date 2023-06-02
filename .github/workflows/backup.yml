@@ -1,0 +1,10 @@
+name: backup
+on:
+  schedule:
+    - cron: '0 21 * * *' # Every day at 21:00
+  workflow_dispatch:
+
+jobs:
+  backup-codebase-to-s3:
+    uses: monopolis-cloud/workflows/.github/workflows/backup-codebase-to-s3.yml@main
+    secrets: inherit
