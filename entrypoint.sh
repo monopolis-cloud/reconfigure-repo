@@ -1,6 +1,6 @@
 #!/bin/ash -e
 
-REPO_PATH=$(jq -r '.repository.full_name' $GITHUB_EVENT_PATH)
+REPO_PATH=$(jq -r '.repository.name' $GITHUB_EVENT_PATH)
 REF_PATH=$(jq -r '.ref' $GITHUB_EVENT_PATH)
 BRANCH=${REF_PATH:11}
 
